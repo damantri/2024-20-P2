@@ -7,6 +7,13 @@ const routes: Routes = [
   { path: 'trainers', component: TrainerListComponent },
   { path: 'trainers/:id', component: TrainerDetailComponent },
   { path: '', redirectTo: '/trainers', pathMatch: 'full' }, // Ruta inicial por defecto
+  {
+    path: 'trainer-module', // Nueva ruta para manejar el módulo Trainer
+    loadChildren: () =>
+      import('./trainer/trainer-routing.module').then(
+        (m) => m.TrainerRoutingModule
+      ),
+  },
 ];
 
 @NgModule({
@@ -14,4 +21,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
